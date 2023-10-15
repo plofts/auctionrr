@@ -18,7 +18,7 @@ class PawnStoreCore(commands.Cog):
     setup = app_commands.Group(name="setup", description="Setup the database for PawnStore")
     
     def owner_only(interaction:discord.Interaction) -> bool:
-        return interaction.user.id == discord.AppInfo.owner.id
+        return interaction.user.id == discord.AppInfo.owner
     
     @setup.command(name="uri")
     @app_commands.check(owner_only)
