@@ -25,3 +25,8 @@ class PawnStoreCore(commands.Cog):
     async def _uri(self, interaction: discord.Interaction, uri: str):
         """Set the database URI"""
         await interaction.response.send_message(uri)
+
+    @app_commands.command(name="test")
+    async def _test(self, interaction: discord.Interaction):
+        """Test the database connection"""
+        await interaction.response.send_message(discord.AppInfo.owner)
