@@ -1,6 +1,7 @@
 import discord
 import aiohttp
 from redbot.core import commands, app_commands, Config
+from redbot.core.bot import Red
 
 
 class PawnStoreCore(commands.Cog):
@@ -18,7 +19,7 @@ class PawnStoreCore(commands.Cog):
     setup = app_commands.Group(name="setup", description="Setup the database for PawnStore")
     
     def owner_only(interaction:discord.Interaction) -> bool:
-        return interaction.user.id == bot.owner_ids[0]
+        return interaction.user.id == Red.owner_ids[0]
     
     @setup.command(name="uri")
     @app_commands.check(owner_only)
