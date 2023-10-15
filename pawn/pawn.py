@@ -1,6 +1,6 @@
 import discord
 import aiohttp
-from redbot.core import commands, app_commands, Config
+from redbot.core import commands, app_commands, Config, bot
 
 
 class PawnStoreCore(commands.Cog):
@@ -18,15 +18,10 @@ class PawnStoreCore(commands.Cog):
     setup = app_commands.Group(name="setup", description="Setup the database for PawnStore")
     
     def owner_only(interaction:discord.Interaction) -> bool:
-        return interaction.user.id == discord.AppInfo.owner
+        return interaction.user.id == bot.owner_ids[0]
     
     @setup.command(name="uri")
     @app_commands.check(owner_only)
     async def _uri(self, interaction: discord.Interaction, uri: str):
         """Set the database URI"""
         await interaction.response.send_message(uri)
-
-    @app_commands.command(name="test")
-    async def _test(self, interaction: discord.Interaction):
-        """Test the database connection"""
-        await interaction.response.send_message(discord.AppInfo.owner)
