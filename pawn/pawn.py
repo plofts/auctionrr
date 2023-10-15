@@ -1,6 +1,6 @@
 import discord
 import aiohttp
-from redbot.core import commands, app_commands, Config, bot
+from redbot.core import commands, app_commands, Config
 
 
 class PawnStoreCore(commands.Cog):
